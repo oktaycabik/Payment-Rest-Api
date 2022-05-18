@@ -20,7 +20,7 @@ const getAccount = (req, res, next) => {
   const account = accounts.find((ac) => ac.accountNumber == req.params?.id);
   const balance = parseFloat(account.balance).toFixed(2);
   const numBalance = Number(balance);
- try {
+
   res.status(200).json({
     success: true,
     data: {
@@ -31,13 +31,6 @@ const getAccount = (req, res, next) => {
       balance: numBalance,
     },
   });
- } catch (error) {
-   res.status(400).json({
-    success: false,
-    message:error
-   })
- }
-
 };
 module.exports = {
   getAccount,
